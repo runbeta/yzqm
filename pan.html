@@ -32,7 +32,7 @@
 	  </tr>
 	  <tr>
 	  <td>
-	  晷时:{{Solar.realdate}}
+	  晷时:{{Solar.realdate}}<a ng-click=monthGoodDays() href=# style=float:right>大盘</a>
 	  </td>
 	  </tr>
 	  <td>
@@ -147,11 +147,33 @@
         <button type=button class=close data-dismiss=modal aria-label=Close><span aria-hidden=true>&times;</span></button>
       </div>
       <div class=modal-body id=gejuShuoMing>
-
       </div>
     </div>
-
   </div>
+</div>
+
+<div class=modal id=goodsDialog tabindex=-1 role=dialog>
+	<div class=modal-dialog role=document>
+		<div class=modal-content>
+			<div class=modal-header>
+				<button type=button class=close data-dismiss=modal aria-label=Close><span aria-hidden=true>&times;</span></button>
+			</div>
+			<div class=modal-body>
+				<table id=goodsMonthDay class="table table-bordered hover_td" style="border: none;">
+					<tr id=float_td>
+						<td>星期日</td>
+						<td>星期一</td>
+						<td>星期二</td>
+						<td>星期三</td>
+						<td>星期四</td>
+						<td>星期五</td>
+						<td>星期六</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+
+	</div>
 </div>
 
 <script>
@@ -164,5 +186,5 @@ var _hmt = _hmt || [];
 })();
 </script>
 
-	    <script type=text/javascript src=dist/js/bundle.js?f995aab82f03d56f659b></script></body>
+	    <script type=text/javascript src=dist/js/bundle.js?bad77727d4b6459032a9></script></body>
 </html>

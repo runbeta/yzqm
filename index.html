@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang=en ng-app=qimenApp>
-  <head>
-    <title>&#9775;奇门排盘&#9775;wx:xxygrzh</title>
-    <meta http-equiv=X-UA-Compatible content="IE=edge">
-    <meta name=viewport content="width=device-width,initial-scale=1">
-    <meta name=description content="">
-    <meta name=author content=xxy>
+
+<head>
+	<title>&#9775;隐踪奇门遁甲在线排盘&#9775;微信:xxygrzh</title>
+	<meta http-equiv=X-UA-Compatible content="IE=edge">
+	<meta name=viewport content="width=device-width,initial-scale=1">
+	<meta name=description content=隐踪奇门遁甲在线排盘>
+	<meta name=author content=xxy>
 	<meta http-equiv=Content-Type content="text/html; charset=UTF-8">
 	<link href=./css/bootstrap.min.css rel=stylesheet>
 	<link href=./css/bootstrap-datetimepicker.min.css rel=stylesheet>
@@ -14,155 +15,194 @@
 	<script src=./js/bootstrap-datetimepicker.min.js></script>
 	<script src=./js/locales/bootstrap-datetimepicker.zh-CN.js></script>
 	<script src=./js/angular.min.js></script>
-  </head>
+</head>
 
-  <body ng-controller=PanPanController>
+<body ng-controller=PanPanController>
 
 
-    
-	  <table class="table table-bordered">
-	  <tr>
-	  <td>
-	  <div class="input-group date solar_datetime">
-        <input class=form-control size=8 type=text value="" readonly=readonly>
-		<span class=input-group-addon><span class="glyphicon glyphicon-th"></span></span>
-    </div>
-	  
-	  </td>
-	  </tr>
-	  <tr>
-	  <td>
-	  晷时:{{Solar.realdate}}
-	  </td>
-	  </tr>
-	  <td>
-	  阴历:{{Lunar.lunarYear}}年{{Lunar.lunarMonthName}}{{Lunar.lunarDayName}} {{Lunar.terming}}:{{Lunar.termingTime}}
-	  </td>
-	  
-	  <tr>
-	  <td>
-	  四柱:{{Lunar.GanZhiYear}}年 {{Lunar.GanZhiMonth}}月 {{Lunar.GanZhiDay}}日 {{Lunar.GanZhiShi}}时 符元:{{fuyuan}}
-	  </td>
-	  </tr>
-	  <tr>
-	  <td>
-	  气将:<span style="{{Lunar.qijiang == Lunar.yuejiang?'':'color:olive';}}">{{wxcs.qijiang}}</span>:金:{{wxcs["金"]}} 水:{{wxcs["水"]}} 木:{{wxcs["木"]}} 火土:{{wxcs["火"]}}
-	  </td>
-	  </tr>
-	  </table>
-	  
-	  
-	  <table class="table table-bordered" data-ng-init=paipan()>
-	  
-		<tr><td></td><td>巳{{yongju.xunshou == '辛'?'&#9775;':''}}{{['亥','卯','未'].indexOf(shiganzhi[1])>-1 ? '&#x1F40E;':''}}<br>
-		{{DiGong[5].yuejiang}}|{{DiGong[5].jianchu}}</td><td>午{{yongju.xunshou == '庚'?'&#9775;':''}}<br>
-		{{DiGong[6].yuejiang}}|{{DiGong[6].jianchu}}
-		</td><td>未{{yongju.xunshou == '庚'?'&#9775;':''}}<br>{{DiGong[7].yuejiang}}|{{DiGong[7].jianchu}}</td><td></td></tr>
-		<tr><td>辰{{yongju.xunshou == '辛'?'&#9775;':''}}<br>
+
+	<table class="table table-bordered">
+		<tr>
+			<td>
+				<div class="input-group date solar_datetime">
+					<input class=form-control size=8 type=text value="" readonly=readonly>
+					<span class=input-group-addon><span class="glyphicon glyphicon-th"></span></span>
+				</div>
+
+			</td>
+		</tr>
+		<tr>
+			<td>
+				晷时:{{Solar.realdate}}
+			</td>
+		</tr>
+		<td>
+			阴历:{{Lunar.lunarYear}}年{{Lunar.lunarMonthName}}{{Lunar.lunarDayName}}
+			{{Lunar.terming}}:{{Lunar.termingTime}}
+		</td>
+		
+		<tr>
+			<td>
+				四柱:{{Lunar.GanZhiYear}}年 {{Lunar.GanZhiMonth}}月 {{Lunar.GanZhiDay}}日 {{Lunar.GanZhiShi}}时 符元:{{fuyuan}}
+			</td>
+		</tr>
+		<tr>
+			<td>
+				气将:<span style="{{Lunar.qijiang == Lunar.yuejiang?'':'color:olive';}}">{{wxcs.qijiang}}</span>:金:{{wxcs["金"]}}
+				水:{{wxcs["水"]}} 木:{{wxcs["木"]}} 火土:{{wxcs["火"]}}
+			</td>
+		</tr>
+	</table>
+
+
+	<table class="table table-bordered" data-ng-init=paipan()>
+
+		<tr>
+			<td></td>
+			<td>巳{{yongju.xunshou == '辛'?'&#9775;':''}}{{['亥','卯','未'].indexOf(shiganzhi[1])>-1 ? '&#x1F40E;':''}}<br>
+				{{DiGong[5].yuejiang}}|{{DiGong[5].jianchu}}</td>
+			<td>午{{yongju.xunshou == '庚'?'&#9775;':''}}<br>
+				{{DiGong[6].yuejiang}}|{{DiGong[6].jianchu}}
+			</td>
+			<td>未{{yongju.xunshou == '庚'?'&#9775;':''}}<br>{{DiGong[7].yuejiang}}|{{DiGong[7].jianchu}}</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>辰{{yongju.xunshou == '辛'?'&#9775;':''}}<br>
 				{{DiGong[4].yuejiang}}<br>{{DiGong[4].jianchu}}
-		</td><td ng-click=promptInfo(3)>
-		({{place[3].shi.hua}})<br>
-		<span style="{{yongju.zhifu == place[3].shi.xing?'color:blue;':''}}">{{place[3].shi.xing}}</span><span style={{place[3].shi.style.gan}}>{{place[3].shi.gan}}</span><span style="{{yongju.zhishi == place[3].shi.men?'color:green;':''}}">{{place[3].shi.men}}</span><span style={{place[3].shi.style.shen}}>{{place[3].shi.shen}}</span><br>
-		{{place[3].ju.xing}}{{place[3].ju.gan}}{{place[3].ju.men}}{{place[3].ju.shen}}<br>
-		{{place[3].nian.xing}}{{place[3].nian.gan}}{{place[3].nian.men}}{{place[3].nian.shen}}<br>
-		{{place[3].yun.xing}}{{place[3].yun.gan}}{{place[3].yun.men}}{{place[3].yun.shen}}
-		</td><td ng-click=promptInfo(8)>
-		({{place[8].shi.hua}})<br>
-		<span style="{{yongju.zhifu == place[8].shi.xing?'color:blue;':''}}">{{place[8].shi.xing}}</span><span style={{place[8].shi.style.gan}}>{{place[8].shi.gan}}</span><span style="{{yongju.zhishi == place[8].shi.men?'color:green;':''}}">{{place[8].shi.men}}</span><span style={{place[8].shi.style.shen}}>{{place[8].shi.shen}}</span><br>
-		{{place[8].ju.xing}}{{place[8].ju.gan}}{{place[8].ju.men}}{{place[8].ju.shen}}<br>
-		{{place[8].nian.xing}}{{place[8].nian.gan}}{{place[8].nian.men}}{{place[8].nian.shen}}<br>
-		{{place[8].yun.xing}}{{place[8].yun.gan}}{{place[8].yun.men}}{{place[8].yun.shen}}
-		</td><td ng-click=promptInfo(1)>
-		({{place[1].shi.hua}})<br>
-		<span style="{{yongju.zhifu == place[1].shi.xing?'color:blue;':''}}">{{place[1].shi.xing}}</span><span style={{place[1].shi.style.gan}}>{{place[1].shi.gan}}</span><span style="{{yongju.zhishi == place[1].shi.men?'color:green;':''}}">{{place[1].shi.men}}</span><span style={{place[1].shi.style.shen}}>{{place[1].shi.shen}}</span><br>
-		{{place[1].ju.xing}}{{place[1].ju.gan}}{{place[1].ju.men}}{{place[1].ju.shen}}<br>
-		{{place[1].nian.xing}}{{place[1].nian.gan}}{{place[1].nian.men}}{{place[1].nian.shen}}<br>
-		{{place[1].yun.xing}}{{place[1].yun.gan}}{{place[1].yun.men}}{{place[1].yun.shen}}
-		</td><td>申{{yongju.xunshou == '己'?'&#9775;':''}}{{['寅','午','戌'].indexOf(shiganzhi[1])>-1 ? '&#x1F40E;':''}}<br>
+			</td>
+			<td ng-click=promptInfo(3)>
+				({{place[3].shi.hua}})<br>
+				<span style="{{yongju.zhifu == place[3].shi.xing?'color:blue;':''}}">{{place[3].shi.xing}}</span><span style={{place[3].shi.style.gan}}>{{place[3].shi.gan}}</span><span style="{{yongju.zhishi == place[3].shi.men?'color:green;':''}}">{{place[3].shi.men}}</span><span style={{place[3].shi.style.shen}}>{{place[3].shi.shen}}</span><br>
+				{{place[3].ju.xing}}{{place[3].ju.gan}}{{place[3].ju.men}}{{place[3].ju.shen}}<br>
+				{{place[3].nian.xing}}{{place[3].nian.gan}}{{place[3].nian.men}}{{place[3].nian.shen}}<br>
+				{{place[3].yun.xing}}{{place[3].yun.gan}}{{place[3].yun.men}}{{place[3].yun.shen}}
+			</td>
+			<td ng-click=promptInfo(8)>
+				({{place[8].shi.hua}})<br>
+				<span style="{{yongju.zhifu == place[8].shi.xing?'color:blue;':''}}">{{place[8].shi.xing}}</span><span style={{place[8].shi.style.gan}}>{{place[8].shi.gan}}</span><span style="{{yongju.zhishi == place[8].shi.men?'color:green;':''}}">{{place[8].shi.men}}</span><span style={{place[8].shi.style.shen}}>{{place[8].shi.shen}}</span><br>
+				{{place[8].ju.xing}}{{place[8].ju.gan}}{{place[8].ju.men}}{{place[8].ju.shen}}<br>
+				{{place[8].nian.xing}}{{place[8].nian.gan}}{{place[8].nian.men}}{{place[8].nian.shen}}<br>
+				{{place[8].yun.xing}}{{place[8].yun.gan}}{{place[8].yun.men}}{{place[8].yun.shen}}
+			</td>
+			<td ng-click=promptInfo(1)>
+				({{place[1].shi.hua}})<br>
+				<span style="{{yongju.zhifu == place[1].shi.xing?'color:blue;':''}}">{{place[1].shi.xing}}</span><span style={{place[1].shi.style.gan}}>{{place[1].shi.gan}}</span><span style="{{yongju.zhishi == place[1].shi.men?'color:green;':''}}">{{place[1].shi.men}}</span><span style={{place[1].shi.style.shen}}>{{place[1].shi.shen}}</span><br>
+				{{place[1].ju.xing}}{{place[1].ju.gan}}{{place[1].ju.men}}{{place[1].ju.shen}}<br>
+				{{place[1].nian.xing}}{{place[1].nian.gan}}{{place[1].nian.men}}{{place[1].nian.shen}}<br>
+				{{place[1].yun.xing}}{{place[1].yun.gan}}{{place[1].yun.men}}{{place[1].yun.shen}}
+			</td>
+			<td>申{{yongju.xunshou == '己'?'&#9775;':''}}{{['寅','午','戌'].indexOf(shiganzhi[1])>-1 ? '&#x1F40E;':''}}<br>
 				{{DiGong[8].yuejiang}}<br>{{DiGong[8].jianchu}}
-		</td></tr>
-		<tr><td>卯{{yongju.xunshou == '壬'?'&#9775;':''}}<br>
+			</td>
+		</tr>
+		<tr>
+			<td>卯{{yongju.xunshou == '壬'?'&#9775;':''}}<br>
 				{{DiGong[3].yuejiang}}<br>{{DiGong[3].jianchu}}
-		</td><td ng-click=promptInfo(2)>
-		({{place[2].shi.hua}})<br>
-		<span style="{{yongju.zhifu == place[2].shi.xing?'color:blue;':''}}">{{place[2].shi.xing}}</span><span style={{place[2].shi.style.gan}}>{{place[2].shi.gan}}</span><span style="{{yongju.zhishi == place[2].shi.men?'color:green;':''}}">{{place[2].shi.men}}</span><span style={{place[2].shi.style.shen}}>{{place[2].shi.shen}}</span><br>
-		{{place[2].ju.xing}}{{place[2].ju.gan}}{{place[2].ju.men}}{{place[2].ju.shen}}<br>
-		{{place[2].nian.xing}}{{place[2].nian.gan}}{{place[2].nian.men}}{{place[2].nian.shen}}<br>
-		{{place[2].yun.xing}}{{place[2].yun.gan}}{{place[2].yun.men}}{{place[2].yun.shen}}
-		</td><td ng-click=promptInfo(4)>
-		({{place[4].shi.hua}})<br>
-		<span style="{{yongju.zhifu == place[4].shi.xing?'color:blue;':''}}">{{place[4].shi.xing}}</span><span style={{place[4].shi.style.gan}}>{{place[4].shi.gan}}</span><span style="{{yongju.zhishi == place[4].shi.men?'color:green;':''}}">{{place[4].shi.men}}</span><span style={{place[4].shi.style.shen}}>{{place[4].shi.shen}}</span><br>
-		{{place[4].ju.xing}}{{place[4].ju.gan}}{{place[4].ju.men}}{{place[4].ju.shen}}<br>
-		{{place[4].nian.xing}}{{place[4].nian.gan}}{{place[4].nian.men}}{{place[4].nian.shen}}<br>
-		{{place[4].yun.xing}}{{place[4].yun.gan}}{{place[4].yun.men}}{{place[4].yun.shen}}
-		</td><td ng-click=promptInfo(6)>
-		({{place[6].shi.hua}})<br>
-		<span style="{{yongju.zhifu == place[6].shi.xing?'color:blue;':''}}">{{place[6].shi.xing}}</span><span style={{place[6].shi.style.gan}}>{{place[6].shi.gan}}</span><span style="{{yongju.zhishi == place[6].shi.men?'color:green;':''}}">{{place[6].shi.men}}</span><span style={{place[6].shi.style.shen}}>{{place[6].shi.shen}}</span><br>
-		{{place[6].ju.xing}}{{place[6].ju.gan}}{{place[6].ju.men}}{{place[6].ju.shen}}<br>
-		{{place[6].nian.xing}}{{place[6].nian.gan}}{{place[6].nian.men}}{{place[6].nian.shen}}<br>
-		{{place[6].yun.xing}}{{place[6].yun.gan}}{{place[6].yun.men}}{{place[6].yun.shen}}
-		</td><td>酉{{yongju.xunshou == '己'?'&#9775;':''}}<br>
+			</td>
+			<td ng-click=promptInfo(2)>
+				({{place[2].shi.hua}})<br>
+				<span style="{{yongju.zhifu == place[2].shi.xing?'color:blue;':''}}">{{place[2].shi.xing}}</span><span style={{place[2].shi.style.gan}}>{{place[2].shi.gan}}</span><span style="{{yongju.zhishi == place[2].shi.men?'color:green;':''}}">{{place[2].shi.men}}</span><span style={{place[2].shi.style.shen}}>{{place[2].shi.shen}}</span><br>
+				{{place[2].ju.xing}}{{place[2].ju.gan}}{{place[2].ju.men}}{{place[2].ju.shen}}<br>
+				{{place[2].nian.xing}}{{place[2].nian.gan}}{{place[2].nian.men}}{{place[2].nian.shen}}<br>
+				{{place[2].yun.xing}}{{place[2].yun.gan}}{{place[2].yun.men}}{{place[2].yun.shen}}
+			</td>
+			<td ng-click=promptInfo(4)>
+				({{place[4].shi.hua}})<br>
+				<span style="{{yongju.zhifu == place[4].shi.xing?'color:blue;':''}}">{{place[4].shi.xing}}</span><span style={{place[4].shi.style.gan}}>{{place[4].shi.gan}}</span><span style="{{yongju.zhishi == place[4].shi.men?'color:green;':''}}">{{place[4].shi.men}}</span><span style={{place[4].shi.style.shen}}>{{place[4].shi.shen}}</span><br>
+				{{place[4].ju.xing}}{{place[4].ju.gan}}{{place[4].ju.men}}{{place[4].ju.shen}}<br>
+				{{place[4].nian.xing}}{{place[4].nian.gan}}{{place[4].nian.men}}{{place[4].nian.shen}}<br>
+				{{place[4].yun.xing}}{{place[4].yun.gan}}{{place[4].yun.men}}{{place[4].yun.shen}}
+			</td>
+			<td ng-click=promptInfo(6)>
+				({{place[6].shi.hua}})<br>
+				<span style="{{yongju.zhifu == place[6].shi.xing?'color:blue;':''}}">{{place[6].shi.xing}}</span><span style={{place[6].shi.style.gan}}>{{place[6].shi.gan}}</span><span style="{{yongju.zhishi == place[6].shi.men?'color:green;':''}}">{{place[6].shi.men}}</span><span style={{place[6].shi.style.shen}}>{{place[6].shi.shen}}</span><br>
+				{{place[6].ju.xing}}{{place[6].ju.gan}}{{place[6].ju.men}}{{place[6].ju.shen}}<br>
+				{{place[6].nian.xing}}{{place[6].nian.gan}}{{place[6].nian.men}}{{place[6].nian.shen}}<br>
+				{{place[6].yun.xing}}{{place[6].yun.gan}}{{place[6].yun.men}}{{place[6].yun.shen}}
+			</td>
+			<td>酉{{yongju.xunshou == '己'?'&#9775;':''}}<br>
 				{{DiGong[9].yuejiang}}<br>{{DiGong[9].jianchu}}
-		</td></tr>
-		<tr><td>寅{{yongju.xunshou == '壬'?'&#9775;':''}}{{['辰','申','子'].indexOf(shiganzhi[1])>-1 ? '&#x1F40E;':''}}<br>
+			</td>
+		</tr>
+		<tr>
+			<td>寅{{yongju.xunshou == '壬'?'&#9775;':''}}{{['辰','申','子'].indexOf(shiganzhi[1])>-1 ? '&#x1F40E;':''}}<br>
 				{{DiGong[2].yuejiang}}<br>{{DiGong[2].jianchu}}
-		</td><td ng-click=promptInfo(7)>
-		({{place[7].shi.hua}})<br>
-		<span style="{{yongju.zhifu == place[7].shi.xing?'color:blue;':''}}">{{place[7].shi.xing}}</span><span style={{place[7].shi.style.gan}}>{{place[7].shi.gan}}</span><span style="{{yongju.zhishi == place[7].shi.men?'color:green;':''}}">{{place[7].shi.men}}</span><span style={{place[7].shi.style.shen}}>{{place[7].shi.shen}}</span><br>
-		{{place[7].ju.xing}}{{place[7].ju.gan}}{{place[7].ju.men}}{{place[7].ju.shen}}<br>
-		{{place[7].nian.xing}}{{place[7].nian.gan}}{{place[7].nian.men}}{{place[7].nian.shen}}<br>
-		{{place[7].yun.xing}}{{place[7].yun.gan}}{{place[7].yun.men}}{{place[7].yun.shen}}
-		</td><td ng-click=promptInfo(0)>
-		({{place[0].shi.hua}})<br>
-		<span style="{{yongju.zhifu == place[0].shi.xing?'color:blue;':''}}">{{place[0].shi.xing}}</span><span style={{place[0].shi.style.gan}}>{{place[0].shi.gan}}</span><span style="{{yongju.zhishi == place[0].shi.men?'color:green;':''}}">{{place[0].shi.men}}</span><span style={{place[0].shi.style.shen}}>{{place[0].shi.shen}}</span><br>
-		{{place[0].ju.xing}}{{place[0].ju.gan}}{{place[0].ju.men}}{{place[0].ju.shen}}<br>
-		{{place[0].nian.xing}}{{place[0].nian.gan}}{{place[0].nian.men}}{{place[0].nian.shen}}<br>
-		{{place[0].yun.xing}}{{place[0].yun.gan}}{{place[0].yun.men}}{{place[0].yun.shen}}
-		</td><td ng-click=promptInfo(5)>
-		({{place[5].shi.hua}})<br>
-		<span style="{{yongju.zhifu == place[5].shi.xing?'color:blue;':''}}">{{place[5].shi.xing}}</span><span style={{place[5].shi.style.gan}}>{{place[5].shi.gan}}</span><span style="{{yongju.zhishi == place[5].shi.men?'color:green;':''}}">{{place[5].shi.men}}</span><span style={{place[5].shi.style.shen}}>{{place[5].shi.shen}}</span><br>
-		{{place[5].ju.xing}}{{place[5].ju.gan}}{{place[5].ju.men}}{{place[5].ju.shen}}<br>
-		{{place[5].nian.xing}}{{place[5].nian.gan}}{{place[5].nian.men}}{{place[5].nian.shen}}<br>
-		{{place[5].yun.xing}}{{place[5].yun.gan}}{{place[5].yun.men}}{{place[5].yun.shen}}
-		</td><td>戌{{yongju.xunshou == '戊'?'&#9775;':''}}<br>
+			</td>
+			<td ng-click=promptInfo(7)>
+				({{place[7].shi.hua}})<br>
+				<span style="{{yongju.zhifu == place[7].shi.xing?'color:blue;':''}}">{{place[7].shi.xing}}</span><span style={{place[7].shi.style.gan}}>{{place[7].shi.gan}}</span><span style="{{yongju.zhishi == place[7].shi.men?'color:green;':''}}">{{place[7].shi.men}}</span><span style={{place[7].shi.style.shen}}>{{place[7].shi.shen}}</span><br>
+				{{place[7].ju.xing}}{{place[7].ju.gan}}{{place[7].ju.men}}{{place[7].ju.shen}}<br>
+				{{place[7].nian.xing}}{{place[7].nian.gan}}{{place[7].nian.men}}{{place[7].nian.shen}}<br>
+				{{place[7].yun.xing}}{{place[7].yun.gan}}{{place[7].yun.men}}{{place[7].yun.shen}}
+			</td>
+			<td ng-click=promptInfo(0)>
+				({{place[0].shi.hua}})<br>
+				<span style="{{yongju.zhifu == place[0].shi.xing?'color:blue;':''}}">{{place[0].shi.xing}}</span><span style={{place[0].shi.style.gan}}>{{place[0].shi.gan}}</span><span style="{{yongju.zhishi == place[0].shi.men?'color:green;':''}}">{{place[0].shi.men}}</span><span style={{place[0].shi.style.shen}}>{{place[0].shi.shen}}</span><br>
+				{{place[0].ju.xing}}{{place[0].ju.gan}}{{place[0].ju.men}}{{place[0].ju.shen}}<br>
+				{{place[0].nian.xing}}{{place[0].nian.gan}}{{place[0].nian.men}}{{place[0].nian.shen}}<br>
+				{{place[0].yun.xing}}{{place[0].yun.gan}}{{place[0].yun.men}}{{place[0].yun.shen}}
+			</td>
+			<td ng-click=promptInfo(5)>
+				({{place[5].shi.hua}})<br>
+				<span style="{{yongju.zhifu == place[5].shi.xing?'color:blue;':''}}">{{place[5].shi.xing}}</span><span style={{place[5].shi.style.gan}}>{{place[5].shi.gan}}</span><span style="{{yongju.zhishi == place[5].shi.men?'color:green;':''}}">{{place[5].shi.men}}</span><span style={{place[5].shi.style.shen}}>{{place[5].shi.shen}}</span><br>
+				{{place[5].ju.xing}}{{place[5].ju.gan}}{{place[5].ju.men}}{{place[5].ju.shen}}<br>
+				{{place[5].nian.xing}}{{place[5].nian.gan}}{{place[5].nian.men}}{{place[5].nian.shen}}<br>
+				{{place[5].yun.xing}}{{place[5].yun.gan}}{{place[5].yun.men}}{{place[5].yun.shen}}
+			</td>
+			<td>戌{{yongju.xunshou == '戊'?'&#9775;':''}}<br>
 				{{DiGong[10].yuejiang}}<br>{{DiGong[10].jianchu}}
-		</td></tr>
-	  <tr><td></td><td>丑{{yongju.xunshou == '癸'?'&#9775;':''}}<br>{{DiGong[1].yuejiang}}|{{DiGong[1].jianchu}}</td><td>子{{yongju.xunshou == '癸'?'&#9775;':''}}<br>{{DiGong[0].yuejiang}}|{{DiGong[0].jianchu}}</td><td>亥{{yongju.xunshou == '戊'?'&#9775;':''}}{{['巳','酉','丑'].indexOf(shiganzhi[1])>-1 ? '&#x1F40E;':''}}<br>{{DiGong[11].yuejiang}}|{{DiGong[11].jianchu}}</td><td></td></tr>
-	  	  <tr><td></td><td>
-<select ng-model=yongju ng-change=paipan() ng-options="m.name for m in yinyang18ju">
-</select></td><td>
-<select ng-model=nianganzhi ng-change=paipan() ng-options="ganzhi as ganzhi group by yi for (ganzhi,yi) in ganzhiarray">
-</select>
-</td><td>
-<select ng-model=shiganzhi ng-change=paipan() ng-options="key as key group by value  for (key,value) in ganzhiarray">
-</select>
-</td><td></td></tr>
-			</table>
+			</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>丑{{yongju.xunshou == '癸'?'&#9775;':''}}<br>{{DiGong[1].yuejiang}}|{{DiGong[1].jianchu}}</td>
+			<td>子{{yongju.xunshou == '癸'?'&#9775;':''}}<br>{{DiGong[0].yuejiang}}|{{DiGong[0].jianchu}}</td>
+			<td>亥{{yongju.xunshou == '戊'?'&#9775;':''}}{{['巳','酉','丑'].indexOf(shiganzhi[1])>-1 ?
+				'&#x1F40E;':''}}<br>{{DiGong[11].yuejiang}}|{{DiGong[11].jianchu}}</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>
+				<select ng-model=yongju ng-change=paipan() ng-options="m.name for m in yinyang18ju">
+				</select>
+			</td>
+			<td>
+				<select ng-model=nianganzhi ng-change=paipan() ng-options="ganzhi as ganzhi group by yi for (ganzhi,yi) in ganzhiarray">
+				</select>
+			</td>
+			<td>
+				<select ng-model=shiganzhi ng-change=paipan() ng-options="key as key group by value  for (key,value) in ganzhiarray">
+				</select>
+			</td>
+			<td></td>
+		</tr>
+	</table>
 
 
-<div class=modal id=gejuDialog tabindex=-1 role=dialog>
-  <div class=modal-dialog role=document>
-    <div class=modal-content>
-    <div class=modal-header>
-        <button type=button class=close data-dismiss=modal aria-label=Close><span aria-hidden=true>&times;</span></button>
-      </div>
-      <div class=modal-body id=gejuShuoMing>
+	<div class=modal id=gejuDialog tabindex=-1 role=dialog>
+		<div class=modal-dialog role=document>
+			<div class=modal-content>
+				<div class=modal-header>
+					<button type=button class=close data-dismiss=modal aria-label=Close><span aria-hidden=true>&times;</span></button>
+				</div>
+				<div class=modal-body id=gejuShuoMing>
+				</div>
+			</div>
+		</div>
+	</div>
 
-      </div>
-    </div>
+	<script>
+		var _hmt = _hmt || [];
+		(function () {
+			var hm = document.createElement("script");
+			hm.src = "https://hm.baidu.com/hm.js?1d10a304928006b38a72c69497407735";
+			var s = document.getElementsByTagName("script")[0];
+			s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
 
-  </div>
-</div>
+<script type=text/javascript src=dist/js/bundle.js?bad77727d4b6459032a9></script></body>
 
-<script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?1d10a304928006b38a72c69497407735";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
-</script>
-
-	    <script type=text/javascript src=dist/js/bundle.js?f995aab82f03d56f659b></script></body>
 </html>
